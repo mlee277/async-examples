@@ -2,6 +2,7 @@ var Q = require('q');
 var Promise = require('bluebird');
 // var fs = require('fs');
 var fs = Promise.promisifyAll(require('fs'));
+//this echo command creates a txt files via your terminal
 //echo 'Hello, world.' >test2.txt
 
 
