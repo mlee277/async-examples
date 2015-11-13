@@ -1,0 +1,20 @@
+{
+  "name": "async-examples",
+  "version": "1.0.0",
+  "description": "async examples",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.0.5",
+    "fs": "0.0.2",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "jquery": "^2.1.4",
+    "nodemon": "^1.8.1",
+    "path": "^0.12.7",
+    "q": "^1.4.1"
+  },
+  "scripts": {
+    "start": "gulp",
+    "test": "node_modules/.bin/mocha -w"
+  }
+}
