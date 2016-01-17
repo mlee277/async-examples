@@ -4,14 +4,21 @@
   "description": "async examples",
   "main": "index.js",
   "dependencies": {
-    "bluebird": "^3.0.5",
+    "bluebird": "^3.1.1",
     "fs": "0.0.2",
     "http": "0.0.0",
     "https": "^1.0.0",
     "jquery": "^2.1.4",
+    "long-stack-traces": "^0.1.2",
+    "longjohn": "^0.2.11",
+    "native-promise-only": "^0.8.1",
     "nodemon": "^1.8.1",
     "path": "^0.12.7",
-    "q": "^1.4.1"
+    "promise-fs": "^0.2.2",
+    "q": "^1.4.1",
+    "stack-trace": "0.0.9",
+    "v8-debug": "^0.7.0",
+    "v8-profiler": "^5.5.0"
   },
   "scripts": {
     "start": "gulp",
