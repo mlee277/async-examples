@@ -1,0 +1,11 @@
+{
+  "name": "jsperf.com",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Run jsperf.com tests locally with your NodeJS version",
+  "dependencies": {},
+  "devDependencies": {
+    "beautify-benchmark": "^0.2.4",
+    "benchmark": "^2.0.0"
+  }
+}

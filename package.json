@@ -9,6 +9,7 @@
     "http": "0.0.0",
     "https": "^1.0.0",
     "jquery": "^2.1.4",
+    "jsperf": "^0.1.7",
     "long-stack-traces": "^0.1.2",
     "longjohn": "^0.2.11",
     "native-promise-only": "^0.8.1",

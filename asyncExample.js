@@ -1,26 +1,82 @@
-//var Q = require('q');
-var Promise = require('bluebird');
+// var Promise = require('bluebird');
+// Promise.longStackTraces();
 var longjohn = require('longjohn');
 longjohn.async_trace_limit = -1;
 var stackTrace = require('stack-trace');
-// var fs = require('fs');
-//var fs = require('promise-fs');
-var fs = Promise.promisifyAll(require('fs'));
+var fs = require('fs');
+//var fs = Promise.promisifyAll(require('fs'));
 //var debug = require('v8-debug');
 //this echo command creates a txt files via your terminal
 //echo 'Hello, world.' >test2.txt
 var profiler = require('v8-profiler');
-var snapshot1 = profiler.takeSnapshot();
-var snapshot2 = profiler.takeSnapshot();
-var snapshot3 = profiler.takeSnapshot();
-var snapshot4 = profiler.takeSnapshot();
-var snapshot5 = profiler.takeSnapshot();
+// var snapshot1 = profiler.takeSnapshot();
+// var snapshot2 = profiler.takeSnapshot();
+// var snapshot3 = profiler.takeSnapshot();
+// var snapshot4 = profiler.takeSnapshot();
+// var snapshot5 = profiler.takeSnapshot();
+// var debug = require('v8-debug');
 
+//var Promise = require("native-promise-only");
+var Promise = global.Promise;
 
-var debug = require('v8-debug');
+var bluebird = function(){
+  return new Promise(function(resolve,reject){
 
-// var Promise = require("native-promise-only");
-// var Promise === global.Promise;
+    debugger;
+    fs.readFile('test.txt', function(err,data){
+      // debugger;
+      if(err) reject(err);
+      var text = data;
+      resolve(text);
+    });
+  });
+};
+bluebird().then(function(text1){
+  // debugger;
+  console.log('bluebird',text1);
+
+})
+.then(function(){
+  a;
+})
+.catch(function(error){
+  //console.error(error);
+  //console.error('from reject', error.stack);
+
+});
+
+//using TestProm with snapshots
+// var testProm = function(){
+//   return new Promise(function(resolve,reject){
+//     debugger;
+//     snapshot2 = profiler.takeSnapshot();
+//     fs.readFile('test.txt', function(err,data){
+//       debugger;
+//       snapshot3 = profiler.takeSnapshot();
+//       if(err) reject(err);
+//       var text = data;
+//       resolve(text);
+//     });
+//   });
+// };
+// testProm().then(function(text1){
+//   debugger;
+//   snapshot4 = profiler.takeSnapshot();
+//   console.log('bluebird',text1);
+// })
+// // //catch will 'catch' all the errors from the reject
+// .catch(function(error){
+//   console.log('from reject', error);
+// })
+// // //finally will run a function after everything
+// .finally(function(){
+//     snapshot4 = profiler.takeSnapshot();
+//   console.log(twopluswo());
+//   //console.log(Promise.longStackTraces());
+//   console.log(snapshot1.getHeader(), snapshot2.getHeader(), snapshot3.getHeader(), snapshot4.getHeader(), snapshot5.getHeader());
+//
+//
+// });
 
 // function msgAfterTimeout(msg,who,timeout){
 //   return new Promise(function(resolve,reject){
@@ -169,66 +225,9 @@ var twopluswo = function(){
 // };
 //
 // fs.readFile('test.txt',usingCallback);
+
 //
-//
-// //using Q
-// var usingQ = function(){
-//   var deferred = Q.defer();
-//   fs.readFile('test.txt', function(err,response){
-//     if(err) deferred.reject(err);
-//     deferred.resolve(response);
-//   });
-//   return deferred.promise;
-// };
-// usingQ().then(function(response){
-//   console.log('Q',response);
-//   return response;
-//  //but what if you want to add something during the chaining of .thens? no problem
-// })
-// .then(function(response,numberTwo){
-//   numberTwo = 2;
-//   console.log(response.toString());
-//   return [response,numberTwo];
-//
-// })
-// .then(function(response){
-//   console.log('number 2', response[1]*3);
-// })
-// // //catch will 'catch' all the errors from the r
-// .catch(function(err){
-//   console.log('Q Error', err);
-// });
-//
-//using bluebird
-var bluebird = function(){
-  return new Promise(function(resolve,reject){
-    debugger;
-    snapshot2 = profiler.takeSnapshot();
-    fs.readFile('test.txt', function(err,data){
-      debugger;
-      snapshot3 = profiler.takeSnapshot();
-      if(err) reject(err);
-      var text = data;
-      resolve(text);
-    });
-  });
-};
-bluebird().then(function(text1){
-  debugger;
-  snapshot4 = profiler.takeSnapshot();
-  console.log('bluebird',text1);
-})
-// //catch will 'catch' all the errors from the reject
-.catch(function(error){
-  console.log('from reject', error);
-})
-// //finally will run a function after everything
-.finally(function(){
-    snapshot4 = profiler.takeSnapshot();
-  console.log(twopluswo());
-  //console.log(Promise.longStackTraces());
-  console.log(snapshot1.getHeader(), snapshot2.getHeader(), snapshot3.getHeader(), snapshot4.getHeader(), snapshot5.getHeader());
-});
+
 
 
 
